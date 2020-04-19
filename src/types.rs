@@ -1,5 +1,4 @@
 //! The set of valid values for FTP commands
-
 use std::convert::From;
 use std::error::Error;
 use std::fmt;
@@ -82,6 +81,7 @@ impl fmt::Display for FtpError {
     }
 }
 
+#[allow(deprecated)]
 impl Error for FtpError {
     fn description(&self) -> &str {
         match *self {
