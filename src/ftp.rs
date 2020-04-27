@@ -442,7 +442,7 @@ impl FtpStream {
     /// returned otherwise it will the list of files on `pathname`.
     pub fn list(&mut self, pathname: Option<&str>) -> Result<Vec<String>> {
         let command = pathname.map_or("LIST\r\n".into(), |path| {
-            format!("LIST {}\r\n", path).into()
+            format!("LIST -a {}\r\n", path).into()
         });
 
         self.list_command(
@@ -460,7 +460,7 @@ impl FtpStream {
     /// returned otherwise it will the list of files on `pathname`.
     pub fn nlst(&mut self, pathname: Option<&str>) -> Result<Vec<String>> {
         let command = pathname.map_or("NLST\r\n".into(), |path| {
-            format!("NLST {}\r\n", path).into()
+            format!("NLST -a {}\r\n", path).into()
         });
 
         self.list_command(
